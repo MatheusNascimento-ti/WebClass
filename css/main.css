@@ -23,6 +23,8 @@ body, button, input, textarea{
     color: #d6d1d1;
     font: 500 2rem poppins
 }
-button{
-    background-color: rgb(20, 187, 48);
+@media(min-width:700px){
+    :root{
+        font-size: 62.5%;
+    }
 }

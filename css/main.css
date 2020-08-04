@@ -16,6 +16,7 @@ body{
 }
 
 #container{
+    width: 90vw;
     max-width: 700px;
 }
 body, button, input, textarea{

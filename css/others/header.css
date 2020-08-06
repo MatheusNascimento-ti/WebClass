@@ -35,6 +35,12 @@
     
     color: #fff;
 }
+.page-header .header-content p{
+    max-width: 30rem;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    margin-top: 10px;
+}
 @media (min-width:700px){
     .page-header{
         height: 340px;

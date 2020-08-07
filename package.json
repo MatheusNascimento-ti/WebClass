@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/MatheusNascimento-ti/WebClass/issues"
   },
-  "homepage": "https://github.com/MatheusNascimento-ti/WebClass#readme"
+  "homepage": "https://github.com/MatheusNascimento-ti/WebClass#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }

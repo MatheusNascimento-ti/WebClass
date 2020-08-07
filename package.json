@@ -4,7 +4,7 @@
   "description": "a class plataform for students and teachers share knowledge",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serv": "nodemon src/server.js"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,20 @@
+{
+  "name": "WebClass",
+  "version": "1.0.0",
+  "description": "a class plataform for students and teachers share knowledge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatheusNascimento-ti/WebClass.git"
+  },
+  "keywords": [],
+  "author": "Matheus Santos Nascimento",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatheusNascimento-ti/WebClass/issues"
+  },
+  "homepage": "https://github.com/MatheusNascimento-ti/WebClass#readme"
+}

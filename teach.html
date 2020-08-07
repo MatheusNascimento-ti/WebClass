@@ -31,7 +31,7 @@
         <main>
             <form action="" id="create-class">
                 <fieldset>
-                    <legend>your data</legend>
+                    <legend>Your data</legend>
                     <div class="input-block">
                         <label for="name">name</label>
                         <input name="name" id="name" required>
@@ -44,12 +44,70 @@
                         <label for="whatsapp">whatsapp <small>(only numbers)</small></label>
                         <input type="number" name="whatsapp" id="whatsapp" required>
                     </div>
-                    <div class="text-area-block">
+                    <div class="textarea-block">
                         <label for="bio">biography</label>
                         <textarea name="bio" id="bio" required></textarea>
                     </div>
                 </fieldset>
+                <fieldset>
+                    <legend>About class</legend>
+                    <div class="select-block">
+                        <label for="subject">class</label>
+                        <select name="subject" id="subject" required>
+                            <option value="">select an option</option>
+                            <option value="1">Art</option>
+                            <option value="2">History</option>
+                            <option value="3">English</option>
+                            <option value="4">geography</option>
+                            <option value="5">physics</option>
+                            <option value="6">biology</option>
+                            <option value="7">chemistry</option>
+                            <option value="8">math</option>
+                            <option value="9">physical education</option>
+                        </select>
+                    </div>
+                    <div class="input-block">
+                        <label for="cost">price / hour <small>($)</small></label>
+                        <input type="number" name="cost" id="cost" required>
+                    </div>
+                </fieldset>
+                <fieldset id="schedule-items">
+                    <legend>Available times
+                        <button id="add-time">+ New time</button>
+                    </legend>
+                    <div class="schedule-item">
+                        <div class="select-block">
+                            <label for="weakday">weak day</label>
+                            <select name="weakday[]" required>
+                                <option value="">select an option</option>
+                                <option value="1">sunday</option>
+                                <option value="2">Monday</option>
+                                <option value="3">Tuesday</option>
+                                <option value="4">Wednesday</option>
+                                <option value="5">Thursday</option>
+                                <option value="6">Friday</option>
+                                <option value="7">Saturday</option>
+                            </select>
+                        </div>
+                        <div class="input-block">
+                            <label for="time-from">work time start</label>
+                            <input type="time" name="time-from[]" required>
+                        </div>
+                        <div class="input-block">
+                            <label for="time-to">work time end</label>
+                            <input type="time" name="time-to[]" required>
+                        </div>
+                    </div>
+                </fieldset>
             </form>
+            <footer>
+                <p>
+                    <img src="images/icons/warning.svg" alt="warning">
+                    important! <br>
+                    fill in all the data
+                </p>
+                <button type="submit" form="create-class">register</button>
+            </footer>
         </main>
     </div>
 </body>

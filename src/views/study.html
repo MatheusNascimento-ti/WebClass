@@ -30,33 +30,27 @@
                         <label for="subject">class</label>
                         <select name="subject" id="subject">
                             <option value="" disabled="" hidden="">select an option</option>
-                            <option value="1">Art</option>
-                            <option value="2">History</option>
-                            <option value="3">English</option>
-                            <option value="4">geography</option>
-                            <option value="5">physics</option>
-                            <option value="6">biology</option>
-                            <option value="7">chemistry</option>
-                            <option value="8">math</option>
-                            <option value="9">physical education</option>
+                            {%for subject in subjects %}
+                                <option value="{{loop.index}}" {{"selected" if filters.subject == loop.index }}>
+                                    {{subject}}
+                                </option>
+                            {%endfor%}
                         </select>
                     </div>
                     <div class="select-block">
                         <label for="weakday">weakday</label>
                         <select name="weakday" id="weakday">
                             <option value="" disabled="" hidden="">select an option</option>
-                            <option value="1">sunday</option>
-                            <option value="2">Monday</option>
-                            <option value="3">Tuesday</option>
-                            <option value="4">Wednesday</option>
-                            <option value="5">Thursday</option>
-                            <option value="6">Friday</option>
-                            <option value="7">Saturday</option>
+                            {%for weakday in weakday %}
+                                <option value="{{loop.index}}" {{"selected" if filters.weakday == loop.index }}>
+                                    {{weakday}}
+                                </option>
+                            {%endfor%}
                         </select>
                     </div>
                     <div class="input-block">
                         <label for="time">schedule(13 is 1pm)</label>
-                        <input type="time" name="time" id="time" min="0" max="12">
+                        <input type="time" name="time" id="time" min="0" max="24" value="{{filters.time}}">
 
                     </div>
                     <div class="filter">
@@ -66,27 +60,32 @@
             </div>
         </header>
         <main>
+            {%for teacher in teachers %}
             <article class="teacher-item">
                 <header>
                     <img 
-                        src="https://avatars2.githubusercontent.com/u/2254731?s=460&amp;u=0ba16a79456c2f250e7579cb388fa18c5c2d7d65&amp;v=4" 
-                        alt="Diego Fernandes">
+                        src="{{teacher.avatar}}" 
+                        alt="{{teacher.name}}">
                     <div>
-                        <strong>Diego Fernandes</strong>
-                        <span>Chemistry</span>
+                        <strong>{{teacher.name}}</strong>
+                        <span>{{teacher.subject}}</span>
                     </div>
                 </header>
             
-                <p>Enthusiast of the best advanced chemistry technologies.<br><br>Passionate about blowing things up in the laboratory and changing people's lives through experiments. More than 200,000 people have experienced one of my explosions.</p>
+                <p>{{teacher.bio}}</p>
             
                 <footer>
-                    <p>price / hour<strong>$ 20,00</strong>
+                    <p>price / hour<strong>$ {{teacher.cost}}</strong>
                     </p>
                     <button type="button">
+                        <a href="https://api.whatsapp.com/send?l=en_US&phone=1{{teacher.whatsapp}}&text=I'm interested in your {{teacher.subject}} class {{teacher.name}}">
                         <img src="/images/icons/whatsapp.svg" alt="Whatsapp">Entrar em contato
+                        </a>
                     </button>
                 </footer>
             </article>
+            {%endfor%}
+            
         </main>
     </div>
 </body>

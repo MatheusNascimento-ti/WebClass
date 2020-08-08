@@ -57,15 +57,11 @@
                         <label for="subject">class</label>
                         <select name="subject" id="subject" required>
                             <option value="">select an option</option>
-                            <option value="1">Art</option>
-                            <option value="2">History</option>
-                            <option value="3">English</option>
-                            <option value="4">geography</option>
-                            <option value="5">physics</option>
-                            <option value="6">biology</option>
-                            <option value="7">chemistry</option>
-                            <option value="8">math</option>
-                            <option value="9">physical education</option>
+                            {%for subject in subjects %}
+                                <option value="{{loop.index}}">
+                                    {{subject}}
+                                </option>
+                            {%endfor%}
                         </select>
                     </div>
                     <div class="input-block">
@@ -82,13 +78,11 @@
                             <label for="weakday">weak day</label>
                             <select name="weakday[]" required>
                                 <option value="">select an option</option>
-                                <option value="1">sunday</option>
-                                <option value="2">Monday</option>
-                                <option value="3">Tuesday</option>
-                                <option value="4">Wednesday</option>
-                                <option value="5">Thursday</option>
-                                <option value="6">Friday</option>
-                                <option value="7">Saturday</option>
+                                {%for weakday in weakday %}
+                                    <option value="{{loop.index}}">
+                                        {{weakday}}
+                                    </option>
+                                {%endfor%}
                             </select>
                         </div>
                         <div class="input-block">

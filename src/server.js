@@ -1,3 +1,7 @@
+const express = require("express")
+const server = express()
+const nunjucks = require("nunjucks")
+
 const teachers = [
     {
         name: "Diego Fernandes",
@@ -23,10 +27,8 @@ function teach(pres, ans) {
     return ans.sendFile(__dirname + "/views/teach.html")
 }
 
-const express = require("express")
-const server = express()
-
-server.use(express.static("public"))
+server
+.use(express.static("public"))
 .get("/", landing)
 .get("/study", study)
 .get("/teach", teach)

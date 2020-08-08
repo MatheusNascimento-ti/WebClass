@@ -13,17 +13,21 @@ const teachers = [
     }
 ]
 
+function landing(res, ans) {
+    return ans.sendFile(__dirname + "/views/index.html")
+}
+function study(res, ans) {
+    return ans.sendFile(__dirname + "/views/study.html")
+}
+function teach(pres, ans) {
+    return ans.sendFile(__dirname + "/views/teach.html")
+}
+
 const express = require("express")
 const server = express()
 
 server.use(express.static("public"))
-.get("/", (res,ans) =>{
-    return ans.sendFile(__dirname + "/views/index.html")
-})
-.get("/study", (res,ans) =>{
-    return ans.sendFile(__dirname + "/views/study.html")
-})
-.get("/teach", (res,ans) =>{
-    return ans.sendFile(__dirname + "/views/teach.html")
-})
+.get("/", landing)
+.get("/study", study)
+.get("/teach", teach)
 .listen(5500)

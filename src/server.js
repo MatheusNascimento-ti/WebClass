@@ -18,14 +18,19 @@ const teachers = [
 ]
 
 function landing(res, ans) {
-    return ans.sendFile(__dirname + "/views/index.html")
+    return ans.render("index.html")
 }
 function study(res, ans) {
-    return ans.sendFile(__dirname + "/views/study.html")
+    return ans.render("study.html")
 }
 function teach(pres, ans) {
-    return ans.sendFile(__dirname + "/views/teach.html")
+    return ans.render("teach.html")
 }
+
+nunjucks.configure('src/views', {
+    express: server,
+    noCache: true
+})
 
 server
 .use(express.static("public"))

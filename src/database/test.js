@@ -1,7 +1,8 @@
 const database = require("./db.js")
+const createteacher = require("./createteachers")
 
-database.then((db) => {
-    teachers = {
+database.then(async (db) => {
+    teachersvalue = {
         name: "Diego Fernandes",
         avatar: "https://avatars2.githubusercontent.com/u/2254731?s=460&amp;u=0ba16a79456c2f250e7579cb388fa18c5c2d7d65&amp;v=4",
         whatsapp: "9929727709",
@@ -13,7 +14,7 @@ database.then((db) => {
         cost: 20,
     }
     
-    classschedule = [
+    classschedulevalues = [
         { 
             weakday: 1,
             time_from: 720,
@@ -26,4 +27,6 @@ database.then((db) => {
         }
     ]
 })
+
+await createteacher(db, teachersvalue, classvalue, classschedulevalues)
 

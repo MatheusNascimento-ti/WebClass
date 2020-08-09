@@ -27,7 +27,18 @@ database.then(async (db) => {
         }
     ]
 
-    await createteachers(db, teachersvalue, classvalue, classschedulevalues)
+    //await createteachers(db, teachersvalue, classvalue, classschedulevalues)
+
+    const selectedteachers = await db.all("SELECT * FROM teachers")
+    //console.log(selectedteachers)
+
+    const classesandteachers = await db.all(`
+        SELECT classes.*, teachers.*
+        FROM teachers
+        JOIN classes ON (classes.teachers_id = teachers.id)
+        WHERE classes.teachers_id = 2;
+    `)
+    console.log(classesandteachers)
 })
 
 

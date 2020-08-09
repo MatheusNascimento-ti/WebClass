@@ -28,7 +28,7 @@
                 <form id="search-teachers">
                     <div class="select-block">
                         <label for="subject">class</label>
-                        <select name="subject" id="subject">
+                        <select name="subjects" id="subjects">
                             <option value="" disabled="" hidden="">select an option</option>
                             {%for subject in subjects %}
                                 <option value="{{loop.index}}" {{"selected" if filters.subject == loop.index }}>
@@ -60,8 +60,11 @@
             </div>
         </header>
         <main>
-            {%for teacher in teachers %}
-            <article class="teacher-item">
+            {% if teacher == "" %}
+                <p class="no-results">there are no teachers with these specifications</p>
+            {% else %}
+                {%for teacher in teachers %}
+                    <article class="teacher-item">
                 <header>
                     <img 
                         src="{{teacher.avatar}}" 
@@ -83,8 +86,9 @@
                         </a>
                     </button>
                 </footer>
-            </article>
-            {%endfor%}
+                    </article>
+                {%endfor%}
+            {% endif %}
             
         </main>
     </div>

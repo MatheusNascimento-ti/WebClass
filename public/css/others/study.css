@@ -40,6 +40,10 @@
     margin: 3.2rem auto;
     width: 90%;
 }
+#page-study main .no-results{
+    font-size: 4.5rem;
+    color: black;
+}
 .teacher-item{
     background-color: lightgray;
     border: 1px solid whitesmoke;

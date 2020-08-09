@@ -1,4 +1,4 @@
-module.exports = async function(db,{teachervalue, classvalue, schedulevalues}){
+module.exports = async (db, teachersvalue, classvalue, classschedulevalues) => {
     const insertteacher = await db.run(`
         INSERT INTO teachers (
             name,
@@ -6,10 +6,10 @@ module.exports = async function(db,{teachervalue, classvalue, schedulevalues}){
             whatsapp,
             bio
         ) VALUES (
-            ${teachervalue.name},
-            ${teachervalue.avatar},
-            ${teachervalue.whatsapp},
-            ${teachervalue.bio}
+            "${teachersvalue.name}",
+            "${teachersvalue.avatar}",
+            "${teachersvalue.whatsapp}",
+            "${teachersvalue.bio}"
         );
     `)
     const teacher_id = insertteacher.lastID
@@ -18,17 +18,17 @@ module.exports = async function(db,{teachervalue, classvalue, schedulevalues}){
             INSERT INTO classes (
                 subject,
                 cost,
-                teacher_id
+                teachers_id
             ) VALUES(
-                ${classvalue.subject},
-                ${classvalue.cost},
-                ${teacher_id}
+                "${classvalue.subject}",
+                "${classvalue.cost}",
+                "${teacher_id}"
             );
     `)
 
     const class_id = insertedclass.lastID
 
-    const inserted_all_classschedulevalues =  classschedulevalues.mat((value) =>{
+    const inserted_all_classschedulevalues =  classschedulevalues.map((classschedulevalues) =>{
         return db.run(`
             INSERT INTO class_schedule (
                 class_id,
@@ -36,13 +36,13 @@ module.exports = async function(db,{teachervalue, classvalue, schedulevalues}){
                 time_from,
                 time_to
             ) VALUES (
-                ${class_id},
-                ${value.weakday},
-                ${value.time_from},
-                ${value.time_to}
+                "${class_id}",
+                "${classschedulevalues.weakday}",
+                "${classschedulevalues.time_from}",
+                "${classschedulevalues.time_to}"
             );
         `)
     })
 
-    await promise.all(inserted_all_classschedulevalues)
+    await Promise.all(inserted_all_classschedulevalues)
 }

@@ -1,5 +1,5 @@
 const database = require("./db.js")
-const createteacher = require("./createteachers")
+const createteachers = require("./createteachers")
 
 database.then(async (db) => {
     teachersvalue = {
@@ -26,7 +26,9 @@ database.then(async (db) => {
             time_to: 1100
         }
     ]
+
+    await createteachers(db, teachersvalue, classvalue, classschedulevalues)
 })
 
-await createteacher(db, teachersvalue, classvalue, classschedulevalues)
+
 

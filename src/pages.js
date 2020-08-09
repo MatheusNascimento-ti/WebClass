@@ -15,7 +15,7 @@ async function study(req, ans) {
 
     
 
-    if(!filters.subject || !filters.weakday || !filters.time){
+    if(!filters.subjects || !filters.weakday || !filters.time){
         return ans.render("study.html", {subjects, filters, weakday})
     }
 
@@ -47,17 +47,44 @@ async function study(req, ans) {
 
     return ans.render("study.html",  {teachers, subjects, filters, weakday})
 }
-function teach(req, ans) {
+async function teach(req, ans) {
+    const createteachers = require("./database/createteachers")
     const data = req.query
 
     const notempty = Object.keys(data).length > 0
 
     if(notempty){
-        data.subject = getsubjects(data.subject)
+        const teachervalue ={
+            name: data.name,
+            avatar: data.avatar,
+            whatsapp: data.whatsapp,
+            bio: data.bio
+        } 
+        const classvalue = {
+            subjects: data.subjects, 
+            cost: data.cost
+        }
+        const classschedulevalues = data.weakday.map((weakday, index) => {
+            return {
+                weakday,
+                time_from: converthour(data.time_from[index]),
+                time_to: converthour(data.time_to[index])
+            }
+        })
+        try {
+            const db = await database
+            await createteachers(db, {teachervalue, classvalue, classschedulevalues})
 
-        teachers.push(data)
+            let querrystring = "?subjects=" + data.subjects
+            querrystring += "&weakday=" + data.weakday[0]
+            querrystring += "&time=" + data.time_from[0] 
 
-        return ans.redirect("/study")
+            return ans.redirect("/study" + querrystring)
+        } catch (error) {
+            console.log(error)
+        }
+        
+        
     }
     return ans.render("teach.html", {subjects, weakday})
 }

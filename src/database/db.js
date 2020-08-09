@@ -11,7 +11,7 @@ function execute(db){
         );
         CREATE TABLE IF NOT EXISTS classes(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            subject INTEGER,
+            subjects INTEGER,
             cost TEXT,
             teachers_id INTEGER
         );

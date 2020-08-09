@@ -16,7 +16,7 @@ module.exports = async (db, teachersvalue, classvalue, classschedulevalues) => {
 
     const insertedclass = await db.run(`
             INSERT INTO classes (
-                subject,
+                subjects,
                 cost,
                 teachers_id
             ) VALUES(

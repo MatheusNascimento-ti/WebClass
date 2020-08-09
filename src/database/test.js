@@ -10,7 +10,7 @@ database.then(async (db) => {
     }
 
     classvalue = {
-        subject: "Chemistry",
+        subject: "1",
         cost: 20,
     }
     
@@ -38,7 +38,14 @@ database.then(async (db) => {
         JOIN classes ON (classes.teachers_id = teachers.id)
         WHERE classes.teachers_id = 2;
     `)
-    console.log(classesandteachers)
+    //console.log(classesandteachers)
+
+    const selectclassschedule = await db.all(`
+        SELECT class_schedule.*
+        FROM class_schedule
+        WHERE class_schedule.class_id = 1;
+    `)
+    console.log(selectclassschedule)
 })
 
 

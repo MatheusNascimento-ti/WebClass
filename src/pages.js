@@ -5,7 +5,6 @@ const {
     converthour
 } = require("./utils/format")
 const database = require("./database/db.js")
-const { render } = require("nunjucks")
 
 function landing(req, ans) {
     return ans.render("index.html")
@@ -41,14 +40,12 @@ async function study(req, ans) {
         const db =  await database
         const teachers = await db.all(query)
 
-        return ans.render("study.html", teachers, subjects, filters, weakday)
+        return ans.render("study.html",  teachers, subjects, filters, weakday)
     } catch (error){
         console.log(error)
-        
-        
     }
 
-
+    return ans.render("study.html",  {teachers, subjects, filters, weakday})
 }
 function teach(req, ans) {
     const data = req.query

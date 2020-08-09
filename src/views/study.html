@@ -31,7 +31,7 @@
                         <select name="subjects" id="subjects">
                             <option value="" disabled="" hidden="">select an option</option>
                             {%for subject in subjects %}
-                                <option value="{{loop.index}}" {{"selected" if filters.subject == loop.index }}>
+                                <option value="{{loop.index}}" {{"selected" if filters.subjects == loop.index }}>
                                     {{subject}}
                                 </option>
                             {%endfor%}
@@ -60,35 +60,36 @@
             </div>
         </header>
         <main>
-            {% if teacher == "" %}
+           {%if teachers == '' %}
                 <p class="no-results">there are no teachers with these specifications</p>
-            {% else %}
+            {%else %}
                 {%for teacher in teachers %}
+                here
                     <article class="teacher-item">
-                <header>
-                    <img 
-                        src="{{teacher.avatar}}" 
-                        alt="{{teacher.name}}">
-                    <div>
-                        <strong>{{teacher.name}}</strong>
-                        <span>{{teacher.subject}}</span>
-                    </div>
-                </header>
-            
-                <p>{{teacher.bio}}</p>
-            
-                <footer>
-                    <p>price / hour<strong>$ {{teacher.cost}}</strong>
-                    </p>
-                    <button type="button">
-                        <a href="https://api.whatsapp.com/send?l=en_US&phone=1{{teacher.whatsapp}}&text=I'm interested in your {{teacher.subject}} class {{teacher.name}}">
-                        <img src="/images/icons/whatsapp.svg" alt="Whatsapp">Entrar em contato
-                        </a>
-                    </button>
-                </footer>
+   <header>
+       <img 
+           src="{{teacher.avatar}}" 
+           alt="{{teacher.name}}">
+       <div>
+           <strong>{{teacher.name}}</strong>
+           <span>{{teacher.subject}}</span>
+       </div>
+   </header> 
+
+   <p>{{teacher.bio}}</p>
+
+   <footer>
+       <p>price / hour<strong>$ {{teacher.cost}}</strong>
+       </p>
+       <button type="button">
+           <a href="https://api.whatsapp.com/send?l=en_US&phone=1{{teacher.whatsapp}}&text=I'm interested in your {{teacher.subject}} class {{teacher.name}}">
+           <img src="/images/icons/whatsapp.svg" alt="Whatsapp">Entrar em contato
+           </a>
+       </button>
+   </footer>
                     </article>
                 {%endfor%}
-            {% endif %}
+            {%endif%}
             
         </main>
     </div>
